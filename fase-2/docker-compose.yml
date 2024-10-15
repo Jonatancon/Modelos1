@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  entrenamiento:
+    build: .
+    volumes:
+      - .:/app  # Monta el directorio que contiene tus archivos CSV
+    command: ["python", "train.py", "./train.csv"]
+
+  prediccion:
+    build: .
+    volumes:
+      - ./:/app  # Monta el directorio que contiene tus archivos CSV
+    command: ["python", "predict.py", "./model", "./test.csv", "./predicts.csv"]

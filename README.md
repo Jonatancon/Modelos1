@@ -8,5 +8,11 @@
 
 **El objetivo principal de este reto es construir un modelo de aprendizaje automático que prediga qué tipo de personas tenían más probabilidades de sobrevivir al desastre del Titanic, utilizando los datos proporcionados de los pasajeros. Estos datos incluyen información como el nombre, la edad, el sexo, la clase socioeconómica, entre otros.**
 
+## Fase 2: Docker
+
+Se crean los scripts solicitados de `predict.py` y `train.py`, además se dokerisa la aplicación.
+
+El proyecto para esta fase presenta un problema. El modelo exportado del `train` para usar en el `predict` presenta problemas por la clase de librerías que se usa. Se cambiará este enfoque para la próxima entrega para permitir el funcionamiento correcto.
+
 
 
