@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  entrenamiento:
+    build: .
+    volumes:
+      - ./uploaded_files:/app/uploaded_files
+    command: ["python", "train.py", "/app/uploaded_files/train.csv"]
+
+  prediccion:
+    build: .
+    depends_on:
+      - entrenamiento
+    volumes:
+      - ./uploaded_files:/app/uploaded_files
+      - ./predictions:/app/predictions
+    command: ["python", "predict.py", "/app/uploaded_files/model", "/app/uploaded_files/test.csv", "/app/predictions/predicts.csv"]
+
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - entrenamiento
+      - prediccion
+    volumes:
+      - ./uploaded_files:/app/uploaded_files
+      - ./predictions:/app/predictions
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

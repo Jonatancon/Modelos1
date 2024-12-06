@@ -14,5 +14,17 @@ Se crean los scripts solicitados de `predict.py` y `train.py`, además se dokeri
 
 El proyecto para esta fase presenta un problema. El modelo exportado del `train` para usar en el `predict` presenta problemas por la clase de librerías que se usa. Se cambiará este enfoque para la próxima entrega para permitir el funcionamiento correcto.
 
+## Fase 3: API
+
+Se crea un script donde se expone un end-point, el cual recibirá dos archivos, test y train, para así utilizar el script de la fase 2 para enseñar al modelo y poder hacer las predicciones.
+
+Se modificó el Dockerfile para que instalara las dependencias esperadas y el docker-compose para que expusiera el servicio de la API, de esta manera solo se tiene que ejecutar dos comandos:
+
+    1) docker-compose build
+    2) docker-compose up
+
+Después de tener el contenedor arriba, se puede probar el servicio ejecutando el script **test.sh** *(Linux)* o **test.bat** *(Windows)* dependiendo del sistema operativo que se tenga.
+
+Por último, se descargará un archivo **predict.csv** con las predicciones hechas por el modelo.
 
 

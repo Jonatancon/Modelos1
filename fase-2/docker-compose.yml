@@ -11,4 +11,6 @@ services:
     build: .
     volumes:
       - ./:/app  # Monta el directorio que contiene tus archivos CSV
+    depends_on:
+      - entrenamiento
     command: ["python", "predict.py", "./model", "./test.csv", "./predicts.csv"]
